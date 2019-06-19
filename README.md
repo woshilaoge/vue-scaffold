@@ -190,15 +190,15 @@ config.module
  - error.vue
 ```
 
-- 默认设置 `disableHostCheck:true`，便于 本地配置 host 调试接口 如 `127.0.0.1 id.test.jd.com`
-- 默认添加 `webpack-scp-upload-plugin` 插件，配合 `scripts` `build:id`构建完成自动更新到 id.jd.com
+- 默认设置 `disableHostCheck:true`，便于 本地配置 host 调试接口 如 `127.0.0.1 id.test.xxx.com`
+- 默认添加 `webpack-scp-upload-plugin` 插件，配合 `scripts` `build:id`构建完成自动更新到 xxx.xxx.com
 
 ```bash
 # 执行
 npm run build:id
 
 # 访问
-http://id.jd.com/www/vue-cli3.x
+http://xxx.xxx.com/www/vue-cli3.x
 
 #省去
 1. 新项目需要手动去 id服务器创建目录
