@@ -1,7 +1,7 @@
 const WebpackScpUploadPlugin = require('webpack-scp-upload-plugin')
 const url = `/www/vue-cli3.x/`
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production' ? `//id.jd.com${url}` : '', // cdn 需要配置的路径 '//www.jd.com/'
+  publicPath: process.env.NODE_ENV === 'production' ? `//xx.xxx.com${url}` : '', // cdn 需要配置的路径 '//www.jd.com/'
   productionSourceMap: false,
   lintOnSave: true, // 是否自动开启eslint 检查
   configureWebpack: config => {
