@@ -1,0 +1,21 @@
+@charset "utf-8";
+/* 引入公共类 */
+@import url('./public/reset-mobile.less');
+@import url('./public/mixins-mobile.less');/*不需要执行、直接调用*/
+@import url('./public/rem.less');
+@import url('./public/h-screen.less');/*提示横屏*/
+@import url('./public/v-screen.less');/*提示竖屏*/
+
+/* 执行公共类 */
+.init-reset();
+.init-rem();
+.init-h-screen();
+
+/* 页面公共 */
+#app {
+  max-width: 750px;
+  height: 100%;
+  margin: 0 auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+}

@@ -1,0 +1,253 @@
+/**
+* @description:移动端 mixins.less
+* @author: 3c-fed
+* @update: DXH (2019-03-5)
+*/
+
+/* 清除 */
+.clearfix() {
+  zoom: 1;
+
+  &:before {
+    content: '';
+    display: block;
+  }
+
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+/* 圆角 */
+.rounded(@radius: 3px) {
+  -webkit-border-radius: @radius;
+  border-radius: @radius;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+
+/* 单个圆角 */
+.border-radius(@topleft: 0, @topright: 0, @bottomright: 0, @bottomleft: 0) {
+  -webkit-border-top-left-radius: @topleft;
+  -webkit-border-top-right-radius: @topright;
+  -webkit-border-bottom-right-radius: @bottomright;
+  -webkit-border-bottom-left-radius: @bottomleft;
+  border-top-left-radius: @topleft;
+  border-top-right-radius: @topright;
+  border-bottom-right-radius: @bottomright;
+  border-bottom-left-radius: @bottomleft;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+
+/* 隐藏文本 */
+.hide-text() {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
+/* 强制换行 */
+.word-break() {
+  word-break: break-all;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+/* 水平垂直居中 */
+.transToCenter(@transX,@transY) {
+  top: 50%;
+  left: 50%;
+  -moz-transform: translate(@transX, @transY);
+  -webkit-transform: translate(@transX, @transY);
+  -o-transform: translate(@transX, @transY);
+  -ms-transform: translate(@transX, @transY);
+  transform: translate(@transX, @transY);
+}
+
+/*子元素水平垂直居中*/
+.center(){
+  -webkit-display:flex;
+  display:flex;
+  -webkit-align-items:center;
+  align-items:center;
+  -webkit-justify-content:center;
+  justify-content:center;   
+}
+
+/* 按下去背景颜色 */
+.tap-color(@color, @opacity: .9) {
+  background-color: @color;
+  &:active {
+    background-color: @color * @opacity;
+  }
+}
+
+/* 遮罩层 */
+.mask(@bgcolor: rgba(0, 0, 0, .4), @z-index: @base-zindex * 1500) {
+  background-color: @bgcolor;
+  position: fixed;
+  z-index: @z-index;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+/* 多行文本溢出显示省略号 */
+.line-clamp(@line: 2, @line-height: .38rem) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: @line;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  line-height: @line-height;
+  max-height: @line-height * @line + .2rem;
+}
+
+/* 单行文本溢出显示省略号 */
+.text-overflow(@align: justify) {
+  max-width: 100%;
+  word-wrap: normal;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: @align;
+}
+
+/* 三角形箭头 */
+// @deg:  45deg - right
+//       135deg - down
+//       -45deg - up
+//      -135deg - left
+.arrow(@color: #DDD, @width: .2rem, @border-width: 2px, @deg: 45deg) {
+  content: '';
+  display: inline-block;
+  width: @width;
+  height: @width;
+  border-style: solid;
+  border-color: @color;
+  border-width: @border-width @border-width 0 0;
+  -webkit-transform: rotate(@deg);
+  transform: rotate(@deg);
+}
+
+/* 背景适配 */
+.rem-bg(){
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
+
+/* 一像素边框(四边框)、支持圆角 */
+.border(@color,@radius: 0,@z-index: 0) {
+  &:after {
+    content: " ";
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid @color;
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    box-sizing: border-box;
+    border-radius: @radius;
+    z-index: @z-index;
+  }
+}
+
+/* 一像素边框(上边框) */
+.border-top(@color,@left: 0,@right: 0,@top: 0,@z-index: 0) {
+  &:before {
+    content: " ";
+    position: absolute;
+    left: @left;
+    right: @right;
+    top: @top;
+    height: 1px;
+    border-top: 1px solid @color;
+    color: @color;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    z-index: @z-index;
+  }
+}
+
+/* 一像素边框(下边框) */
+.border-bottom(@color,@left: 0,@right: 0,@bottom: 0,@z-index: 0) {
+  &:after {
+    content: " ";
+    position: absolute;
+    left: @left;
+    right: @right;
+    bottom: @bottom;
+    height: 1px;
+    border-bottom: 1px solid @color;
+    color: @color;
+    -webkit-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    z-index: @z-index;
+  }
+}
+
+/* 一像素边框(左边框) */
+.border-left(@color,@top: 0,@left: 0,@bottom: 0,@z-index: 0) {
+  &:after {
+    content: " ";
+    position: absolute;
+    left: @left;
+    top: @top;
+    bottom: @bottom;
+    width: 1px;
+    border-left: 1px solid @color;
+    color: @color;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: scaleX(0.5);
+    transform: scaleX(0.5);
+    z-index: @z-index;
+  }
+}
+
+/* 一像素边框(右边框) */
+.border-right(@color,@top: 0,@right: 0,@bottom: 0,@z-index: 0) {
+  &:before {
+    content: " ";
+    position: absolute;
+    right: @right;
+    top: @top;
+    bottom: @bottom;
+    width: 1px;
+    border-right: 1px solid @color;
+    color: @color;
+    -webkit-transform-origin: 100% 0;
+    transform-origin: 100% 0;
+    -webkit-transform: scaleX(0.5);
+    transform: scaleX(0.5);
+    z-index: @z-index;
+  }
+}

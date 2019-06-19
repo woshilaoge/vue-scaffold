@@ -1,0 +1,45 @@
+@charset "utf-8";
+/**
+* @description:移动端重置文件
+* @author: 3c-fed
+* @update: DXH (2019-01-25)
+*/
+.init-reset() {
+  *,
+  ::before,
+  ::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  html,body{
+    height: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    font: 14px/1.75 -apple-system, BlinkMacSystemFont, "PingFang SC","Helvetica Neue",STHeiti,"Microsoft Yahei",Tahoma,Simsun,sans-serif;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    background-color: #efeff4;
+    -webkit-overflow-scrolling: touch;
+  }
+  a {
+    text-decoration: none;
+    color: #333;
+  }
+  ul,
+  ol {
+    list-style: none;
+  }
+  input[type="text"],
+  input[type="search"],
+  textarea {
+    border: none;
+    outline: none;
+    resize: none;
+    -webkit-appearance: none;
+  }
+  img {
+    display: block;
+    max-width: 100%;
+  }
+}
